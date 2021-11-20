@@ -27,7 +27,7 @@ namespace Loc.UI
 
         private void DesignerModeButton_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate()
+            NavigationService.Navigate(new DesginStringView());
         }
     }
 }

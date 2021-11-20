@@ -9,7 +9,21 @@
       Title="DesginStringView">
 
     <Grid>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <DataGrid d:ItemsSource="{Binding Source=Strings}" 
+                  AutoGenerateColumns="False" 
+                  SelectionChanged="DataGrid_SelectionChanged"
+                  CanUserAddRows="True"
+                  CanUserDeleteRows="True">
+            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Context" Binding="{Binding Context}"></DataGridTextColumn>
+                <DataGridTextColumn Header="English" Binding="{Binding EnglishText}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+          
+        <!--<DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="DataGrid_SelectionChanged"/> -->
+    
 
     </Grid>
 </Page>
