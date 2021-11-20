@@ -13,20 +13,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Wpf_Testing
+namespace Wpf_Loc_Tool
 {
     /// <summary>
-    /// Interaction logic for DesginStringView.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class DesginStringView : Page
-    {
-
-
-        public DesginStringView()
+    public partial class MainWindow : Window
+    {        
+        public MainWindow()
         {
             InitializeComponent();
-
             
+            LoginPage loginPage = new LoginPage(); 
+            NavigationService.GetNavigationService(this).Navigate(loginPage);
         }
     }
 }

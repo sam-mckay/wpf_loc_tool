@@ -13,21 +13,25 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Wpf_Testing
+namespace Wpf_Loc_Tool
 {
     /// <summary>
-    /// Interaction logic for HomePage.xaml
+    /// Interaction logic for LognPage.xaml
     /// </summary>
-    public partial class HomePage : Page
+    public partial class LoginPage : Page
     {
-        public HomePage()
+        public LoginPage()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
-        private void DesignerModeButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate()
+            NavigationService navigationService = NavigationService.GetNavigationService(this);
+
+
+            HomePage homePage = new HomePage();
+            navigationService.Navigate(homePage);
         }
     }
 }
