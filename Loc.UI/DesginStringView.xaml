@@ -9,21 +9,27 @@
       Title="DesginStringView">
 
     <Grid>
-        <DataGrid d:ItemsSource="{Binding Source=Strings}" 
-                  AutoGenerateColumns="False" 
-                  SelectionChanged="DataGrid_SelectionChanged"
+        <DataGrid d:ItemsSource="{Binding}"
+                  Name="StringsDataGrid"
+                  AutoGenerateColumns="True" 
+                  
+                  
                   CanUserAddRows="True"
-                  CanUserDeleteRows="True">
+                  CanUserDeleteRows="True"
+                  AlternatingRowBackground="LightBlue">
+            <!--AddingNewItem="StringsDataGrid_AddingNewItem"
+                  InitializingNewItem="StringsDataGrid_InitializingNewItem"-->>
             
+            <!--
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding ID}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID" Binding="{Binding StringID}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Context" Binding="{Binding Context}"></DataGridTextColumn>
                 <DataGridTextColumn Header="English" Binding="{Binding EnglishText}"></DataGridTextColumn>
             </DataGrid.Columns>
+            -->
         </DataGrid>
-          
-        <!--<DataGrid d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="DataGrid_SelectionChanged"/> -->
-    
+        <DataGrid Name="TestDG" d:ItemsSource="{Binding}"/>
+
 
     </Grid>
 </Page>

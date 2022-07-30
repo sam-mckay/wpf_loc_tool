@@ -22,41 +22,44 @@ namespace Loc.UI
     /// <summary>
     /// Interaction logic for DesginStringView.xaml
     /// </summary>
-    public partial class DesginStringView : Page, INotifyPropertyChanged
+    public partial class DesginStringView : Page
     {
-        public ObservableCollection<LocString> Strings
-        {
-            get { return Strings; }
-            set 
-            { 
-                Strings = value;
-                NotifyPropertyChanged();
-            }
-
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
         public DesginStringView()
         {
             InitializeComponent();
 
-            LocRecords.Load();
-            Strings = new ObservableCollection<LocString>();
-            foreach (LocString locString in LocRecords.LocStrings)
-            {
-                Strings.Add(locString);
-            }
+            ObservableCollection<LocString> locStrings = GetData();
+
+            StringsDataGrid.DataContext = locStrings;
+            TestDG.DataContext = locStrings;
         }
 
-        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        private ObservableCollection<LocString> GetData()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            ObservableCollection<LocString> data = new ObservableCollection<LocString>();
+            foreach (LocString locString in LocRecords.LocStrings)
+            {
+                data.Add(locString);
+            }
+            return data;
         }
+        
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            
+        }
 
+        private void StringsDataGrid_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            //Strings.Add(new LocString("","",""));
+        }
+
+        private void StringsDataGrid_InitializingNewItem(object sender, InitializingNewItemEventArgs e)
+        {
+            LocString newLocString = new LocString("", "", "");
+            LocRecords.LocStrings.Add(newLocString);
+            //Strings.Add(newLocString);
         }
     }
 }
